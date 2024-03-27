@@ -32,7 +32,7 @@ function Navbar() {
       <div className="menu-area">
         <ul className="menu-list">
           {menuList.map((item) => (
-            <li>{item}</li>
+            <li key={item}>{item}</li>
           ))}
         </ul>
 

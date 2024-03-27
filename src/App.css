@@ -18,7 +18,8 @@
 .menu-area {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  margin-left: 100px;
 }
 
 .menu-input {
@@ -27,6 +28,7 @@
   border-bottom: 1px solid black;
   height: 30px;
   gap: 5px;
+  margin-right: 20px;
 }
 
 .menu-input > input {
