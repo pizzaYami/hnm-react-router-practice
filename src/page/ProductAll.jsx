@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "../component/ProductCard.tsx";
+import ProductCard from "../component/ProductCard";
 import { Col, Container, Row } from "react-bootstrap";
 
 function ProductAll() {
@@ -16,17 +16,15 @@ function ProductAll() {
     getProducts();
   }, []);
   return (
-    <div>
-      <Container fluid>
-        <Row>
-          {productList.map((item) => (
-            <Col lg={3}>
-              <ProductCard key={item.id} item={item} />
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </div>
+    <Container>
+      <Row>
+        {productList.map((item) => (
+          <Col lg={3}>
+            <ProductCard key={item.id} item={item} />
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 }
 
