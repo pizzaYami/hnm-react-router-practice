@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ function Navbar() {
           <div>로그인</div>
         </div>
       </div>
-      <div className="nav-section">
+      <Logo className="nav-section">
         <img
           onClick={() => {
             navigate("/");
@@ -36,7 +37,7 @@ function Navbar() {
           src="https://upload.wikimedia.org/wikipedia/commons/5/53/H%26M-Logo.svg"
           alt="hnm-logo"
         />
-      </div>
+      </Logo>
       <div className="menu-area">
         <ul className="menu-list">
           {menuList.map((item) => (
@@ -54,3 +55,9 @@ function Navbar() {
 }
 
 export default Navbar;
+
+const Logo = styled.div`
+  img {
+    width: 150px;
+  }
+`;
