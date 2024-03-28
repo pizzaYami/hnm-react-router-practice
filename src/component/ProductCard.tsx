@@ -5,7 +5,7 @@ function ProductCard({ item }) {
 
   return (
     <div>
-      <img src={item?.img} alt="girl" />
+      <img src={item?.img} alt="girl" className="product-image" />
       <div>Conscious choice</div>
       <div>{item?.title}</div>
       <div>{item?.price}</div>
