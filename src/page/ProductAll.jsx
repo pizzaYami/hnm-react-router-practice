@@ -6,7 +6,7 @@ function ProductAll() {
   const [productList, seProductList] = useState([]);
 
   const getProducts = async () => {
-    let url = `http://localhost:4000/products`;
+    let url = `https://localhost:4000/products`;
     let res = await fetch(url);
     let data = await res.json();
     seProductList(data);
