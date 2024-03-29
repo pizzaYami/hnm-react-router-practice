@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import ProductAll from "./page/ProductAll";
 import Login from "./page/Login";
 import Navbar from "./component/Navbar";
@@ -21,7 +20,7 @@ function App() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
       <Routes>
         <Route path="/" element={<ProductAll />} />
         <Route

@@ -5,10 +5,10 @@ import styled from "styled-components";
 
 function ProductDetail() {
   const [productList, seProductList] = useState([]);
-  const params = useParams();
+  const { id } = useParams();
 
   const getProducts = async () => {
-    let url = `https://my-json-server.typicode.com/pizzaYami/hnm-react-router-practice/products`;
+    let url = `https://my-json-server.typicode.com/pizzaYami/hnm-react-router-practice/products/${id}`;
     let res = await fetch(url);
     let data = await res.json();
     seProductList(data);
@@ -20,10 +20,10 @@ function ProductDetail() {
 
   return (
     <Container>
-      <img src={productList[params.id]?.img} alt="product-img" />
+      <img src={productList?.img} alt="product-img" />
       <Wrap>
-        <h3>{productList[params.id]?.title}</h3>
-        <h4>￦ {productList[params.id]?.price}</h4>
+        <h3>{productList?.title}</h3>
+        <h4>￦ {productList?.price}</h4>
         <div>Conscious choice</div>
         <DropdownButton
           size="lg"
@@ -51,6 +51,9 @@ const Container = styled.div`
   justify-content: center;
   padding: 30px;
   gap: 30px;
+  img {
+    width: 50%;
+  }
 `;
 
 const Wrap = styled.div`
