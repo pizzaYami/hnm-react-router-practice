@@ -8,7 +8,7 @@ function ProductDetail() {
   const params = useParams();
 
   const getProducts = async () => {
-    let url = `http://localhost:4000/products`;
+    let url = `https://my-json-server.typicode.com/pizzaYami/hnm-react-router-practice/products`;
     let res = await fetch(url);
     let data = await res.json();
     seProductList(data);
