@@ -6,7 +6,7 @@ function ProductAll() {
   const [productList, seProductList] = useState([]);
 
   const getProducts = async () => {
-    let url = `https://localhost:4000/products`;
+    let url = `http://localhost:4000/products`;
     let res = await fetch(url);
     let data = await res.json();
     seProductList(data);
@@ -19,8 +19,8 @@ function ProductAll() {
     <Container>
       <Row>
         {productList.map((item) => (
-          <Col lg={3}>
-            <ProductCard key={item.id} item={item} />
+          <Col lg={3} key={item.id}>
+            <ProductCard item={item} />
           </Col>
         ))}
       </Row>
