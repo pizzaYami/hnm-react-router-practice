@@ -4,11 +4,12 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faBars, faSearch, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
-function Navbar({ authenticate, setAuthenticate }) {
+function Navbar() {
   const navigate = useNavigate();
   const [isMenu, setIsMenu] = useState(false);
-
+  const authenticate = useSelector((state) => state.auth.authenticate);
   const menuList = [
     "여성",
     "Divided",
@@ -20,7 +21,6 @@ function Navbar({ authenticate, setAuthenticate }) {
     "지속가능성",
   ];
   const goToLogin = () => {
-    setAuthenticate(false);
     navigate("/login");
   };
   const search = (e) => {

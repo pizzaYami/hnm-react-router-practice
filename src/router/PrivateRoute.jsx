@@ -1,8 +1,12 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import ProductDetail from "../page/ProductDetail";
+import { useSelector } from "react-redux";
 
-function PrivateRoute({ authenticate }) {
+function PrivateRoute() {
+  const authenticate = useSelector((state) => state.auth.authenticate);
+  console.log(authenticate);
+
   return authenticate === true ? <ProductDetail /> : <Navigate to="/login" />;
 }
 

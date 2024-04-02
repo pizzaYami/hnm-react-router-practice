@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { productDetailAction } from "../redux/actions/\bproductDetailAction";
 
 function ProductDetail() {
-  const [productList, seProductList] = useState([]);
+  const dispatch = useDispatch();
+  const { productDetailList } = useSelector((state) => state.productDetail);
   const { id } = useParams();
+  console.log("productListDetail", productDetailList[0]);
 
   const getProducts = async () => {
-    let url = `https://my-json-server.typicode.com/pizzaYami/hnm-react-router-practice/products/${id}`;
-    let res = await fetch(url);
-    let data = await res.json();
-    seProductList(data);
+    dispatch(productDetailAction.getProductDetails(id));
   };
 
   useEffect(() => {
@@ -21,10 +22,10 @@ function ProductDetail() {
 
   return (
     <Container>
-      <img src={productList?.img} alt="product-img" />
+      <img src={productDetailList[0]?.img} alt="product-img" />
       <Wrap>
-        <h3>{productList?.title}</h3>
-        <h4>￦ {productList?.price}</h4>
+        <h3>{productDetailList[0]?.title}</h3>
+        <h4>￦ {productDetailList[0]?.price}</h4>
         <div>Conscious choice</div>
         <DropdownButton
           size="lg"
