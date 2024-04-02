@@ -26,7 +26,6 @@ function Navbar({ authenticate, setAuthenticate }) {
   const search = (e) => {
     if (e.key === "Enter") {
       let keyword = e.target.value;
-      console.log(keyword);
       navigate(`/?q=${keyword}`);
     }
   };

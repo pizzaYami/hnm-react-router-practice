@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ProductCard from "../component/ProductCard";
 import { Col, Container, Row } from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
 import { productAction } from "../redux/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
+
 function ProductAll() {
-  const productList = useSelector((state) => state.productList);
+  const productList = useSelector((state) => state.product.productList);
   const dispatch = useDispatch();
-  const [query, setQuery] = useSearchParams();
+  const [query] = useSearchParams();
 
   const getProducts = () => {
     let searchQuery = query.get("q") || "";
-    console.log(query.get("q"));
     //{dispatch({type.....})} 이런식으로 하면 store로 가버린다.
     // store가기전에 미들웨어를 들려야한다.
     dispatch(productAction.getProducts(searchQuery));
@@ -19,6 +19,7 @@ function ProductAll() {
 
   useEffect(() => {
     getProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   return (
