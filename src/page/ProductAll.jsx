@@ -10,12 +10,8 @@ function ProductAll() {
   const dispatch = useDispatch();
   const [query] = useSearchParams();
 
-  console.log(productList);
-
   const getProducts = () => {
     let searchQuery = query.get("q") || "";
-    //{dispatch({type.....})} 이런식으로 하면 store로 가버린다.
-    // store가기전에 미들웨어를 들려야한다.
     dispatch(fetchProducts(searchQuery));
   };
 

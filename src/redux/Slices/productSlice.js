@@ -15,6 +15,19 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
+export const fetchProductDetails = createAsyncThunk(
+  "product/fetchItem",
+  async (id, thunkApi) => {
+    try {
+      let url = `https://my-json-server.typicode.com/pizzaYami/hnm-react-router-practice/products/${id}`;
+      let res = await fetch(url);
+      return await res.json();
+    } catch (err) {
+      thunkApi.rejectWithValue(err.message);
+    }
+  }
+);
+
 // function productReducer(state = initialState, action) {
 //   let { type, payload } = action;
 //   switch (type) {
@@ -60,6 +73,11 @@ const productSlice = createSlice({
       .addCase(fetchProducts.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      // detail 성공시
+      .addCase(fetchProductDetails.fulfilled, (state, action) => {
+        state.productList = action.payload;
+        state.isLoading = false;
       });
   },
 });
