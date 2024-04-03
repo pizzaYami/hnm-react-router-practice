@@ -3,16 +3,16 @@ import { Dropdown, DropdownButton } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { productDetailAction } from "../redux/actions/\bproductDetailAction";
+import { productAction } from "../redux/actions/productAction";
 
 function ProductDetail() {
   const dispatch = useDispatch();
-  const { productDetailList } = useSelector((state) => state.productDetail);
   const { id } = useParams();
-  console.log("productListDetail", productDetailList[0]);
 
-  const getProducts = async () => {
-    dispatch(productDetailAction.getProductDetails(id));
+  const productList = useSelector((state) => state.product.productList);
+
+  const getProducts = () => {
+    dispatch(productAction.getProductDetails(id));
   };
 
   useEffect(() => {
@@ -22,10 +22,10 @@ function ProductDetail() {
 
   return (
     <Container>
-      <img src={productDetailList[0]?.img} alt="product-img" />
+      <img src={productList?.img} alt="product-img" />
       <Wrap>
-        <h3>{productDetailList[0]?.title}</h3>
-        <h4>￦ {productDetailList[0]?.price}</h4>
+        <h3>{productList?.title}</h3>
+        <h4>￦ {productList?.price}</h4>
         <div>Conscious choice</div>
         <DropdownButton
           size="lg"
