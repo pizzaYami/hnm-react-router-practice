@@ -74,10 +74,22 @@ const productSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
+      .addCase(
+        // detail 가져오는 중
+        fetchProductDetails.pending,
+        (state) => {
+          state.isLoading = true;
+        }
+      )
       // detail 성공시
       .addCase(fetchProductDetails.fulfilled, (state, action) => {
         state.productList = action.payload;
         state.isLoading = false;
+      })
+      // detail 에러시
+      .addCase(fetchProductDetails.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       });
   },
 });
